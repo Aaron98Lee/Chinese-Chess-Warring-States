@@ -66,13 +66,13 @@ gantt
 
 | Work | Status |
 |---|---|
-| `Xiangqi.Core`: representation, move generation, legality with reasons, check/mate/stalemate, flying general, Zobrist, FEN, ICCS notation | **Increment 1 in progress** (this session) |
+| `Xiangqi.Core`: representation, move generation, legality with reasons, check/mate/stalemate, flying general, Zobrist, FEN, ICCS notation | **Increment 1 done (2026-11-20)**: 77/77 tests; perft matches published values and an independent engine (`docs/testing/test-register.md`) |
 | WXF and Chinese notation | Planned (increment 2) |
 | `Xiangqi.Session`: commands and events, history, undo/redo, `casual` and `basic-asian` adjudication, draw rules, save model | Planned (increment 2) |
-| Test suites: per-rule tests, perft conformance, property tests, adjudication and save/load tests | Started with increment 1 |
+| Test suites: per-rule tests, perft conformance, property tests, adjudication and save/load tests | Rule, perft, property and external-reference suites done; adjudication and save/load with increment 2 |
 | `Xiangqi.AI` baseline (alpha-beta, TT, quiescence) | Planned (increment 3) |
-| CLI: perft, FEN tools, self-play, benchmark harness | Perft started with increment 1 |
-| CI pipeline for libraries | Started with increment 1 |
+| CLI: perft, FEN tools, self-play, benchmark harness | `perft`, `divide`, `fen`, `perft-file` done; self-play and benchmark with increment 3 |
+| CI pipeline for libraries | Workflow added (`.github/workflows/ci.yml`); first GitHub run happens on push |
 
 **Exit criteria:** document 11 §2 rules criteria met (QG-01 to QG-10); AI produces only legal moves in self-play.
 

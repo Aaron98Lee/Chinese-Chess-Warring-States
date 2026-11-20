@@ -1,0 +1,24 @@
+# .NET build outputs
+/artifacts/
+bin/
+obj/
+*.user
+*.suo
+.vs/
+.idea/
+TestResults/
+
+# Unity (for the future /game project)
+/game/[Ll]ibrary/
+/game/[Tt]emp/
+/game/[Oo]bj/
+/game/[Bb]uild/
+/game/[Bb]uilds/
+/game/[Ll]ogs/
+/game/[Uu]ser[Ss]ettings/
+/game/*.csproj
+/game/*.sln
+
+# OS
+.DS_Store
+Thumbs.db

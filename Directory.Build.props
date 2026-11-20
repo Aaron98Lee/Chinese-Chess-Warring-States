@@ -1,0 +1,17 @@
+<Project>
+  <!--
+    Shared build settings for the engine-independent libraries.
+    LangVersion is pinned to C# 9 because the core must also compile inside Unity
+    (Unity 6 supports C# 9). Do not raise it without checking the pinned Unity version.
+  -->
+  <PropertyGroup>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Deterministic>true</Deterministic>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <!-- Build outputs go to /artifacts so source folders stay clean for Unity package import. -->
+    <UseArtifactsOutput>true</UseArtifactsOutput>
+    <Authors>Warring States Xiangqi project</Authors>
+  </PropertyGroup>
+</Project>

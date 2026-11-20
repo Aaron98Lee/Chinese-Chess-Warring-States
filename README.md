@@ -9,3 +9,18 @@ A professional-quality Xiangqi game in which every piece is a historically resea
 The pre-production package (proposal, game design outline, technology report, historical research register, visual direction, piece design matrix, architecture, vertical-slice specification, roadmap, risks and decisions, quality standards) is in [`docs/preproduction/`](docs/preproduction/README.md).
 
 Start with the [executive proposal](docs/preproduction/01-executive-project-proposal.md), then the [decision checklist](docs/preproduction/10-risks-assumptions-and-decisions.md).
+
+## Rules engine (Milestone 2, in progress)
+
+The engine-independent Xiangqi rules engine lives in [`src/Xiangqi.Core`](src/Xiangqi.Core/README.md),
+with tests in `tests/` and executed results in the [test register](docs/testing/test-register.md).
+
+Requirements: .NET 8 SDK.
+
+```bash
+dotnet test Xiangqi.sln -c Release
+```
+
+```bash
+dotnet run --project src/Xiangqi.Tools.Cli -c Release -- perft 4
+```

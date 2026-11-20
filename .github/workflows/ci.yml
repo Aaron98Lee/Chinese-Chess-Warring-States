@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  rules-engine:
+    name: Rules engine (build and test)
+    runs-on: ubuntu-latest
+    env:
+      DOTNET_CLI_TELEMETRY_OPTOUT: 1
+      DOTNET_NOLOGO: 1
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - name: Build (warnings are errors; C# 9 enforced for Unity compatibility)
+        run: dotnet build Xiangqi.sln -c Release
+
+      - name: Test
+        run: dotnet test Xiangqi.sln -c Release --no-build --logger "trx;LogFileName=test-results.trx" --results-directory test-results
+
+      - name: Perft smoke test (initial position, depth 4)
+        run: dotnet artifacts/bin/Xiangqi.Tools.Cli/release/xiangqi-cli.dll perft 4
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: test-results

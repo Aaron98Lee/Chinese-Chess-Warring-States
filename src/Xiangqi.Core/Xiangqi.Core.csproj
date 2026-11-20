@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Engine-independent Xiangqi rules engine. No Unity, no I/O, no wall-clock time, no global randomness.
+    Targets netstandard2.1 so the same sources compile in Unity (via an asmdef with noEngineReferences).
+  -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>Xiangqi.Core</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="Xiangqi.Core.Tests" />
+  </ItemGroup>
+</Project>
