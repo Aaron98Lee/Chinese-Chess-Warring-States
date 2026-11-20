@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Document status | **Draft v0.1, outline for approval.** It will become GDD v1.0 at the end of Milestone 1 |
+| Document status | **v0.2: revised after your decisions** (seven selectable states, strategist, crossbow unit, Windows only). It becomes GDD v1.0 at the end of Milestone 1 |
 | Date | 2026-11-20 |
 | Working title | **TBD.** Codename: *Warring States*. Candidate titles are listed in §14 |
 
@@ -10,9 +10,9 @@
 
 ## 1. Game concept
 
-A premium, single-purchase Xiangqi game that plays by the exact traditional rules. It is presented as the last campaign of the Warring States world: the Han and Chu armies facing each other across the Hong Canal in 203 BCE. Each of the 32 pieces is a small, historically researched military formation that marches, wheels and yields on a living battlefield. The rules engine is authoritative; the presentation never changes the game.
+A premium, single-purchase Xiangqi game that plays by the exact traditional rules, set in the Warring States period (475–221 BCE). Each player, human or computer, leads one of the **seven states**: Qin 秦, Chu 楚, Zhao 趙, Yan 燕, Qi 齊, Wei 魏 or Han 韓. Each of the 32 pieces is a small, historically researched military formation in its state's armour, weapons and colours, marching, wheeling and yielding on a living battlefield. The rules engine is authoritative: the choice of state, and the presentation, never change the game.
 
-**One-line pitch:** *Real Xiangqi, real history: command the armies of Han and Chu across the river that gave the board its name.*
+**One-line pitch:** *Real Xiangqi, real history: choose one of the seven Warring States and lead its army across the river.*
 
 ## 2. Target audience
 
@@ -55,6 +55,7 @@ The rules engine implements the traditional rules below. **International chess r
 
 ### 5.1 Board and coordinates
 
+- **Terminology:** in rules and notation, "Red" means the **first player** (先手) and "Black" the **second player** (後手), whichever states they chose (decision D17).
 - 9 files × 10 ranks = 90 intersections; river between ranks 4 and 5; palaces on files d–f, ranks 0–2 (Red) and 7–9 (Black).
 - Internal coordinates: file `a`–`i` (0–8), rank `0`–`9` from Red's side, as in ICCS notation.
 - Displayed notations (§5.7): Chinese traditional, WXF and ICCS.
@@ -70,6 +71,9 @@ rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w - - 0 1
 The parser also accepts the H (horse) / E (elephant) letter variant used by some sources, such as the Chess Programming Wiki perft page.
 
 ### 5.3 Piece movement
+
+Rules use the traditional piece names. In this game the Elephant is shown as a **Strategist** formation and the Cannon as a **Crossbow unit**; their movement rules are unchanged.
+
 
 | Piece | Movement | Restrictions |
 |---|---|---|
@@ -136,18 +140,25 @@ Full chase adjudication is the most complex part of the rules and the most frequ
 | Endgame puzzles (殘局) | Curated positions under standard rules | Post-MVP candidate |
 | Historical scenario positions | Themed starting positions (standard rules, composed positions) | Post-MVP candidate |
 | Online multiplayer | Ranked and casual, authoritative server | Post-MVP; needs a separate scope decision |
-| Additional army sets | For example "Qin vs Zhao (Changping, 260 BCE)" or a Song-era set | Post-MVP candidate |
+| Additional battlefields | For example Maling, Yique, Jimo | Post-MVP candidate |
+
+### 6.1 State selection
+
+- In every mode, each player, human or AI, chooses one of the seven states, or "random". The AI's state is chosen by the human player or randomised.
+- **Same-state matches are allowed** (proposed, D16): the second player's army uses the state's alternate palette.
+- **Who moves first** (the "Red" role) is chosen on the new-game screen: player choice, random, or alternating in a series (D17).
+- State choice is **purely thematic**: rules, move generation and AI strength are identical for every state. A state's flavour comes from its formations, banners, music motifs and Codex entries.
 
 ## 7. Piece identities and military formations
 
-Specified in **document 06 (Piece Design Matrix)**. Summary: Han (Red) and Western Chu (Black); five-man squads as Soldiers; Qin-type and Chu-type chariots; traction trebuchets as Cannons; Han Chancellor (相) and Chu war elephant (象) as the Elephant pieces.
+Specified in **document 06 (Piece Design Matrix)**. Summary: seven states, each with its own identity layer on a shared base kit; five-man squads as Soldiers; strategists (軍師) as the Elephant/Minister pieces; crossbow units (弩兵) as the Cannons. Bases carry the traditional glyphs by turn role.
 
 ## 8. User interface and experience
 
 ### 8.1 Screen flow
 
 ```
-Splash ► Main menu ─┬─► New game (mode, side, difficulty, ruleset) ► Board
+Splash ► Main menu ─┬─► New game (mode, states, who moves first, difficulty, ruleset) ► Board
                     ├─► Continue (last save)
                     ├─► Tutorial ► Lessons
                     ├─► Codex and Rules
@@ -163,7 +174,7 @@ Board ► Pause menu (resume, restart, settings, save, resign, offer draw, quit)
 - **Left panel:** move list (switchable notation), undo/redo, replay controls.
 - **Right panel:** turn indicator (army emblem plus text), captured pieces tray (glyph tokens), AI "thinking" indicator, clocks (when enabled).
 - **Top:** check warning banner (text plus icon plus sound, never colour alone).
-- **Contextual:** hover tooltip on any intersection explaining why a move is illegal: "Horse leg blocked by the Soldier at e3", "Elephants cannot cross the river", "This move would expose your general (flying general)", "Your general would be in check".
+- **Contextual:** hover tooltip on any intersection explaining why a move is illegal: "Horse leg blocked by the Soldier at e3", "Strategists (the Elephant piece) cannot cross the river", "This move would expose your general (flying general)", "Your general would be in check".
 - Panels collapse for an unobstructed board.
 
 ### 8.3 Interaction
@@ -179,7 +190,7 @@ Lacquer panels (black ground, vermilion trim), bamboo-slip move list, seal-style
 
 ## 9. Animation
 
-Specified in document 06, §3. Player settings: animation speed (0.5×–2×), **instant moves**, reduced motion (no camera moves, simplified idles, no screen effects), skip cinematics.
+Specified in document 06, §4. Player settings: animation speed (0.5×–2×), **instant moves**, reduced motion (no camera moves, simplified idles, no screen effects), skip cinematics.
 
 ## 10. Audio
 
@@ -187,7 +198,7 @@ Specified in document 06, §3. Player settings: animation speed (0.5×–2×), *
 |---|---|---|
 | Music | Period instrument palette: bronze chime bells, chime stones, drums, zither (*qin* and *se*), mouth organ (*sheng*), vessel flute (*xun*). Adaptive intensity tied to material balance and check states | HR-34 |
 | Command signals | Drum motif for moves and advances; metal bell or gong motif for withdrawal and undo | HR-33 |
-| Formation SFX | Footsteps on loess, armour lacing and plates, chariot wheels, hooves, trebuchet creak and release, elephant calls, banner cloth | — |
+| Formation SFX | Footsteps on loess, armour lacing and plates, chariot wheels, hooves, crossbow release and bolt flight, map boards and bamboo slips, banner cloth | — |
 | Ambience | Wind over loess, canal water, distant camp | — |
 | Voice | None at launch, or non-verbal only. Avoids anachronistic modern Mandarin battle cries | — |
 
@@ -219,17 +230,17 @@ Strength claims are made only after benchmarking (document 07, §11; document 11
 
 ## 13. Platforms and performance
 
-Proposed: **Windows PC (Steam) first, macOS second**, with tablet and console ports evaluated after launch. Performance targets by hardware tier are in documents 03 (§7) and 11 (§4). All are subject to decision D6.
+**Windows PC (Steam) only for now** (decision D6). Other platforms are re-evaluated after launch. Performance targets by hardware tier are in documents 03 (§7) and 11 (§4).
 
 ## 14. Release scope, monetisation and naming (for approval)
 
-- **MVP / 1.0:** versus AI, hotseat, tutorial, Codex, replay and analysis, both armies complete, Classic view, three languages (English, Simplified Chinese, Traditional Chinese).
-- **Monetisation (proposed):** premium single purchase, no microtransactions. Possible paid army-set expansions later.
-- **Candidate titles:** *Chu River, Han Border* (楚河漢界); *Xiangqi: The Hong Canal*; *Warring States Xiangqi*. A trademark search is needed before selection.
+- **MVP / 1.0 (approved, D10):** versus AI, hotseat, tutorial, Codex, replay and analysis, **all seven states complete**, Classic view, three languages (English, Simplified Chinese, Traditional Chinese).
+- **Monetisation (approved):** premium single purchase, no microtransactions. Possible paid expansions (battlefields, army variants) later.
+- **Candidate titles (deferred, D14):** *Warring States Xiangqi* (戰國象棋); *Xiangqi: Seven States*. Note that 七國象戲 is the name of an 11th-century seven-player variant attributed to Sima Guang, so a "seven kingdoms" title could be confused with it. A trademark search is needed before selection.
 
 ## 15. Future features (not approved scope)
 
-Online multiplayer, puzzles, historical scenarios, additional army sets, player profiles and statistics, achievements, spectator mode, tablet port, console ports, a Song-era army set to accompany the history of the game itself.
+Online multiplayer, puzzles, historical scenarios, additional battlefields, optional per-state AI play styles ("doctrines" that change the AI's style but never the rules), player profiles and statistics, achievements, spectator mode, macOS, tablet and console ports.
 
 ## 16. Open design questions
 
@@ -238,3 +249,5 @@ Online multiplayer, puzzles, historical scenarios, additional army sets, player 
 3. Codex unlocks: unlocked by play, or all open from the start?
 4. Does the after-river "skirmish line" state for Soldiers aid comprehension or add noise? To be tested in the slice.
 5. Default notation per locale: Chinese for zh locales, WXF for en?
+6. Default AI state: random, or a fixed "rival" state per player state?
+7. Should the music include a short motif per state (for example played at game start)?

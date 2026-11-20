@@ -1,6 +1,6 @@
 # Pre-production Package — Historical Xiangqi (codename *Warring States*)
 
-**Status:** Draft v0.1, submitted for approval (2026-11-20). **Implementation has not started.**
+**Status:** v0.2 (2026-11-20). Direction approved with changes; remaining decisions D8 and D15–D18 (document 10). **Milestone 2 (rules engine) has started**; no art assets exist yet.
 
 ## Reading order
 

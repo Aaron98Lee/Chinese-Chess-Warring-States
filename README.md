@@ -1,10 +1,10 @@
 # Historical Chinese Chess (Xiangqi) — codename *Warring States*
 
-A professional-quality Xiangqi game in which every piece is a historically researched ancient Chinese military formation, set in the Han–Chu war across the Hong Canal (楚河漢界), built on accurate traditional Xiangqi rules.
+A professional-quality Xiangqi game in which every piece is a historically researched ancient Chinese military formation, set in the Warring States period, where each player leads one of the seven states (Qin, Chu, Zhao, Yan, Qi, Wei, Han), built on accurate traditional Xiangqi rules.
 
 ## Project status
 
-**Pre-production, awaiting approval.** No implementation has started.
+**Pre-production approved with changes; Milestone 2 (rules engine) in progress.** No art assets exist yet.
 
 The pre-production package (proposal, game design outline, technology report, historical research register, visual direction, piece design matrix, architecture, vertical-slice specification, roadmap, risks and decisions, quality standards) is in [`docs/preproduction/`](docs/preproduction/README.md).
 

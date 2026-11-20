@@ -2,203 +2,194 @@
 
 | | |
 |---|---|
-| Document status | **Draft v0.1, submitted for approval** |
+| Document status | **v0.2: revised after your decisions** (seven states, colour per state, *Qin Dynasty Epic* as art reference; D7 approved) |
 | Date | 2026-11-20 |
 | Depends on | 04 Historical Research, 06 Piece Design Matrix |
 
-> **No images are included in this package.** It is a written direction plus a specification for the mood board, reference board and concept art to be produced in Milestone 1. Presenting descriptive concepts as finished art would breach the project brief.
+> **No images are included in this package.** This is a written direction plus a specification for the mood board, reference boards and concept art to be produced in Milestone 1. Generative AI may be used **for internal concept exploration only** (decision D11): logged, never shipped, and never presented as final art.
 
 ---
 
 ## 1. Art direction statement
 
-**"A living museum reconstruction."** The battlefield should look the way an archaeologist's best reconstruction would look if it came to life: bright bronze, lacquer, painted textiles, rammed earth and loess light. It should be legible at a glance as a game of Xiangqi.
-
-We are not making a fantasy China, a film-costume China or a museum-grey China. The terracotta figures we draw on were brightly painted and their weapons were polished. The game shows that living colour, and it explains the evidence in an in-game Codex.
+**"A living museum reconstruction of the Warring States."** Seven armies, each recognisable at a glance, all drawn from one coherent late-Warring-States material culture: bright bronze, dark iron, lacquer, painted textiles, rammed earth and loess light. The look should sit comfortably beside the modern screen image of the period that Chinese audiences know (with *Qin Dynasty Epic* as our reference), while every identity-critical element is traced to archaeology and texts.
 
 ## 2. Visual pillars
 
 | Pillar | Meaning | Test |
 |---|---|---|
-| **Evidence-led** | Every identity-critical element traces to the reference register | Register ID exists for each element (QH-01) |
-| **Readable first** | Piece type and owner can be read instantly from the gameplay camera | ≥ 95% identification in timed tests (QV-01) |
-| **Living diorama** | Formations breathe, shift and react; the board feels like a place | Idle variety, environment motion, no lockstep animation |
-| **Restraint** | Conflict without gore; drama through banners, drums, light and motion | Rating target, decision D10 |
-| **One system** | 32 pieces come from one modular kit with controlled variation, not 32 unrelated models | Shared skeletons, materials and part library (§6.5) |
+| **Evidence-led** | Identity-critical elements trace to the reference register; screen references only point to evidence | Register ID for every element (QH-01) |
+| **Readable first** | Piece type and owner readable instantly in any of the 28 possible pairings | ≥ 95% / ≥ 99% identification (QV-01, QV-02) |
+| **Seven distinct states** | Each state recognisable by its signature trait, not by colour alone | State-recognition target (QV-11) |
+| **Living diorama** | Formations breathe, shift and react; the battlefield feels like a place | Idle variety, environment motion |
+| **Restraint** | Conflict without gore | Rating target (D10) |
+| **One system** | 49 formation variants from one modular kit plus seven identity layers | Shared skeletons, materials and part library (§6.5) |
 
-## 3. Rendering style evaluation
+## 3. Rendering style (approved, D7)
 
-| Approach | Visual ceiling | Readability | Animation | Production cost | 4K scalability | Verdict |
-|---|---|---|---|---|---|---|
-| Photorealistic 3D | Very high | Risky: detail noise, uncanny faces | High cost | Very high | Good, but heavy | Rejected: cost and readability |
-| **Stylised realism, real-time 3D** | High | Good: controlled shape language | Full 3D animation | High but bounded | Excellent | **Recommended** |
-| High-quality 2D illustration | High for stills | Excellent | Limited (frame-by-frame cost) | High per frame | Large textures | Use for UI, Codex and key art only |
-| 2.5D pre-rendered sprites | Medium–high | Good | Fixed angles; heavy sprite sheets at 4K | Medium | Poor (memory at 4K) | Rejected for gameplay |
-| Hybrid (3D pieces, painted 2D backdrop) | High | Good | Full 3D for pieces | Medium–high | Good | **Adopted for the far environment** |
+**Stylised realism in real-time 3D.** Realistic anatomy, materials and proportions, with silhouette-defining elements (banners, weapons, headgear, shields, the strategist's canopy) enlarged by about 10–15% for readability. The far environment combines 3D terrain with painted sky and distant-terrain backdrops. High-quality 2D illustration is used for UI, Codex and key art.
 
-**Recommendation:** real-time 3D with **stylised realism**: realistic anatomy, materials and proportions, with silhouette-defining elements such as banners, weapons, headgear and shields enlarged by about 10–15% for readability. The far environment combines 3D terrain with painted sky and distant-terrain backdrops.
+## 4. Ownership and state identity: never colour alone
 
-## 4. Army identities: distinguishable without colour
+In any match, two states face each other. That gives **21 distinct pairings plus 7 same-state matches** (decision D16). Ownership is carried by channels that work in **every** pairing, including for colour-blind players:
 
-Banner colour is a Xiangqi convention (document 04, §3.3). Ownership is carried by **four independent channels**, so the owner remains readable for colour-blind players and in greyscale:
+| Channel | What it shows | Works for same-state matches? | Works without colour? |
+|---|---|---|---|
+| 1. **Turn-role base band** | First player: **plain raised band**. Second player: **notched band** (a repeating cut pattern) | ✔ | ✔ |
+| 2. **Traditional glyph** | First-player set 帥 仕 相 俥 傌 炮 兵 / second-player set 將 士 象 車 馬 砲 卒 | ✔ | ✔ |
+| 3. **State emblem** | State name in its regional script on the banner and base | ✗ (same emblem) | ✔ |
+| 4. **State kit and silhouette** | Signature traits (document 06 §2) | ✗ (same kit) | ✔ |
+| 5. **State colour** | Banners, base rim, UI side colour | Via the alternate palette | ✗ |
+| 6. **Board orientation** | Each army faces from its own side | ✔ | ✔ |
 
-| Channel | Red: Han | Black: Chu |
-|---|---|---|
-| 1. **Base design** | Round base with a vermilion lacquer rim and a **plain raised band** | Round base with a black lacquer rim carrying a **painted cloud-scroll band** (Chu lacquer motif) |
-| 2. **Glyph** | Red-side character (帥 仕 相 俥 傌 炮 兵) on the base front, facing the player | Black-side character (將 士 象 車 馬 砲 卒) |
-| 3. **Silhouette and equipment** | Bareheaded infantry with topknots; small riveted lamellar; crossbows prominent; long caps for officers | Some lacquered leather helmets; large laced lamellae; painted dragon-and-phoenix shields; tall caps for commanders |
-| 4. **Material language** | Cinnabar and ochre textiles; natural bronze; dark armour with red, white and green cords | Black-ground lacquer with vermilion and yellow painting; rawhide brown-black; bronze |
-
-**Board orientation** is a fifth cue: each army faces from its own side.
+Channels 1, 2 and 6 guarantee ownership even in a same-state match. Channels 3 to 5 carry state identity.
 
 ## 5. Colour and material palette (provisional)
 
-Values are **starting points for concept art**, to be adjusted against pigment research (HR-15) and colour-blind checks. They are not final.
+### 5.1 State colours
 
-### 5.1 Faction signal colours (UI, bases, banners)
+These values are **starting points for concept art**, to be reconciled with the *Qin Dynasty Epic* reference sheet and validated under colour-blind simulation (QV-03). The basis for each colour is in document 04 §3.3.
 
-| Token | Use | Proposed sRGB |
-|---|---|---|
-| `han.signal` | Han banners, base rim, UI side colour | `#B3261E` (cinnabar red) |
-| `han.signal.light` | Highlights, selection tint | `#E0564A` |
-| `chu.signal` | Chu banners, base rim, UI side colour | `#1C1A19` (lacquer black) |
-| `chu.accent` | Chu painted motifs (vermilion on black) | `#C8442E` |
-| `chu.accent.gold` | Chu ochre painted motifs | `#C99A3B` |
-| `neutral.bronze.new` | Polished bronze | `#B08D57` |
+| State | Primary (banner, rim) | Secondary (trim) | Alternate palette (same-state match, second player) |
+|---|---|---|---|
+| Qin 秦 | Black `#1C1A19` | Bronze `#B08D57` | Black with a cinnabar trim `#B3261E` |
+| Chu 楚 | Vermilion `#B3261E` | Lacquer black `#1C1A19` | Black ground with vermilion trim |
+| Qi 齊 | Purple `#5B2A6E` | Ivory `#E8DFC8` | Ivory with purple trim |
+| Zhao 趙 | Ivory `#E8DFC8` | Charcoal `#2B2B2B` | Charcoal with ivory trim |
+| Yan 燕 | Azure `#2F6EA5` | Iron grey `#4A4E52` | Iron grey with azure trim |
+| Wei 魏 | Ochre-gold `#C99A3B` | Umber `#5A3E22` | Umber with ochre trim |
+| Han 韓 | Green `#3C7A3B` | Bronze `#B08D57` | Bronze with green trim |
 
-**Contrast requirement:** the black Chu signal sits on a lit board, so every Chu base includes a light painted band (channel 1). It must never depend on black-on-dark contrast.
+**Rules:**
+
+- Each state colour sits on a base band with a contrasting value, so dark colours (Qin, Qi) never depend on dark-on-dark contrast.
+- Problem pairs under colour-vision deficiency (for example Chu and Han, Yan and Han, Qi and Yan) are covered by channels 1, 2 and 6 (§4). They are explicitly included in the QV-03 test matrix.
+- Within an army, **clothing colours vary**, following the polychromy evidence (HR-15). State colour lives on banners, base, emblems, trims and lacquer, not on uniforms.
 
 ### 5.2 Figure material palette (period-based ranges)
 
 | Material | Appearance | Evidence |
 |---|---|---|
-| Lacquered rawhide armour | Deep brown-black, semi-gloss, with coloured lacing | HR-06, HR-07 |
-| Riveted lamellar (Han) | Dark plates; red, white or pink cords and rivets | HR-10, HR-12 |
-| Bronze (weapons, fittings) | **New**: gold-brown metallic, not green patina | HR-13 |
-| Iron | Dark grey, darker at the edges | Document 04, §4.5 |
-| Textiles | Varied: cinnabar, malachite green, azurite blue, purple, ochre, off-white; plain or simply patterned | HR-15 |
-| Chu silks (command figures) | Brown, red and yellow ground with embroidered dragon and phoenix motifs | HR-37 |
-| Timber (chariots, trebuchets, poles) | Oiled, some lacquered parts; bronze fittings | HR-16, HR-17 |
-| Rammed earth | Warm loess yellow-brown, horizontal tamping layers visible | HR-36 |
-| Roof tiles | Grey ceramic, round eave tiles | HR-36 |
-
-**Variation within an army follows the polychromy evidence.** Clothing colours vary between figures, while armour, base and banner remain consistent. This is how the terracotta figures were painted, and it prevents the "clone army" look.
+| Lacquered rawhide armour (Chu and others) | Deep brown-black, semi-gloss, coloured lacing | HR-06, HR-07 |
+| Riveted lamellar (Qin) | Dark plates; red, white or pink cords and rivets | HR-10, HR-12 |
+| Iron armour and weapons (Yan especially) | Dark grey, darker edges, slight sheen | HR-42 |
+| Bronze | **New**: gold-brown metallic, never green patina | HR-13 |
+| Textiles | Varied: cinnabar, malachite green, azurite blue, purple, ochre, off-white | HR-15 |
+| Timber (chariots, poles, map boards) | Oiled; lacquered parts; bronze fittings | HR-16, HR-47 |
+| Rammed earth | Warm loess yellow-brown, visible tamping layers | HR-36 |
 
 ## 6. Formation system rules
 
 ### 6.1 Base
 
-- Low circular lacquered base, diameter **0.84 P** (radius 0.42 P), bevelled, height ≈ 0.04 P.
-- Faction rim and band (§4); glyph inset at the front edge, rotated to face the active player's camera.
-- The base is part of the formation asset and is never hidden by figures. Figures stand inside the rim.
-- The selection ring, threat ring and check pulse render **on the base rim**, so indicators never compete with figures.
+- Low circular lacquered base, diameter **0.84 P**, bevelled, height ≈ 0.04 P.
+- **Rim in the state colour; band pattern by turn role** (plain or notched); traditional glyph at the front edge, facing the active player's camera; small state emblem on the rim.
+- Selection, threat and check indicators render **on the base rim**, never on figures.
 
 ### 6.2 Footprint and scale
 
-- All figures, horses and machines fit within radius **0.45 P** in static poses (document 06, §1).
-- Common figure scale: 1 P ≈ 3.5 m equivalent. Horses and the elephant use the same scale, arranged compactly. Any scale licence over ±10% is recorded as E4.
-- Validated by the Milestone 1 greybox readability test before any final modelling.
+- All geometry within radius **0.45 P** in static poses. Common figure scale: 1 P ≈ 3.5 m equivalent.
+- Any scale licence over ±10% is recorded as E4. The Chariot is the only large formation.
+- Validated in the Milestone 1 greybox readability test before any final modelling.
 
 ### 6.3 Height tiers and occlusion
 
-- Tiers T1–T5 (≈ 0.6–1.1 P). Only the General's banner reaches T5.
-- At the default camera pitch (≈ 58°), an element of height *h* hides ground up to about 0.6 *h* behind it. A T5 banner (1.1 P) therefore cannot hide the base of the piece one rank behind. This is to be verified in the greybox.
-- Fallbacks: thin banner geometry, a "lower banners" option, and an outline through occluders for the selected piece and its legal targets.
+- Tiers T1–T5 (≈ 0.6–1.1 P); only the General's banner reaches T5.
+- At the default pitch (≈ 58°) an element of height *h* hides ground up to about 0.6 *h* behind it, so a T5 banner cannot hide the base one rank behind. To be verified in the greybox.
+- Fallbacks: thin banner geometry, a "lower banners" option, outlines through occluders.
 
 ### 6.4 Visual hierarchy within a formation
 
-1. **Primary subject:** largest, front-centre, highest local contrast, unique headgear or prop.
-2. **Signature element:** banner, canopy, wheels, beam or crossed polearms (document 06 silhouette key).
+1. **Primary subject:** largest, front-centre, highest contrast, unique headgear or prop.
+2. **Signature element:** banner, canopy, wheels, pennant over crossbows, or crossed polearms.
 3. **Supporting figures:** lower contrast, varied poses, never taller than the signature element.
 
-### 6.5 Modular kit and controlled variation
+### 6.5 Shared kit plus state identity layers
 
 Modelled on the Qin workshops' own modular production (HR-14):
 
-- **Shared skeletons:** one human skeleton for all figures, one horse skeleton and one elephant skeleton. Animations are retargeted.
-- **Part library per army:** heads (8–12 variants), hairstyles and caps, torsos with armour types, arms with weapon grips, legs and footwear, shields, weapons.
-- **Paint masks:** each part uses RGBA mask textures to drive procedural colour variation from the period palette ranges.
-- **Seeded assembly:** each formation instance is assembled from a deterministic seed, so the same game always looks the same and replays are consistent.
-- **Result:** many visibly different soldiers from a bounded asset count.
+- **Shared skeletons:** one human skeleton and one horse skeleton for all states; animations are shared and retargeted.
+- **Shared base kit:** bodies, common garments, common weapons, chariot base, map board, banner rigs.
+- **State identity layer** (document 06 §2): state-specific armour sets, headgear, shields, signature weapons, emblem decals, palettes.
+- **Paint masks:** RGBA masks drive colour variation within each state's palette ranges.
+- **Seeded assembly:** each formation instance is assembled from a deterministic seed, so replays look identical.
+
+**Production consequence:** the art cost of seven states is driven by the number of identity-layer parts, not by 49 unique formations. Estimates are in document 09 §4.
 
 ## 7. Readability rules (non-negotiable)
 
-1. Logical position is always unambiguous. The base centre sits exactly on the intersection.
-2. Board lines, palace diagonals and the river edge stay visible between formations at all camera presets.
-3. No decoration (fortifications, banners, foliage, particles) inside the board area may rise above T1 or cover an intersection.
-4. Selection and legal-move indicators render on top, depth-tested against the board but not against figures, with outlines through occluders.
-5. Animations never cover another formation's base for longer than one frame of a transition. The path planner (document 06, §3.1) ensures this.
-6. **Classic view:** a toggle that replaces formations with high-quality lacquered disc tokens bearing the traditional glyphs. This serves accessibility, purists and analysis, and it is a finished asset in its own right.
+1. Logical position is always unambiguous: the base centre sits exactly on the intersection.
+2. Board lines, palace diagonals and the river edge stay visible at all camera presets.
+3. No decoration inside the board area rises above T1 or covers an intersection.
+4. Selection and legal-move indicators render on top, with outlines through occluders.
+5. Animations never cover another formation's base (path planner, document 06 §4.1).
+6. **Classic view:** a toggle that shows high-quality lacquered disc tokens bearing the traditional glyphs. These are finished assets, rimmed in the state colour and carrying the turn-role band.
 
 ## 8. Board and environment concept
 
-**Setting:** the Hong Canal front at Guangwu, Xingyang, 203 BCE (HR-35).
+**MVP battlefield (decision D18): the Dan River valley at Changping, 260 BCE** (HR-35). It is neutral to the chosen states.
 
 | Element | Concept |
 |---|---|
-| Board surface | A levelled loess field laid out as a surveyed grid. Lines are shallow incised channels with a light rammed-earth edge, readable as lines from above |
-| River (楚河漢界) | The Hong Canal: a real water channel crossing the board between ranks 4 and 5, with banks and subtle flow. The inscription 楚河　漢界 is carved into stone markers on each bank, outside the play area |
-| Palaces | Low rammed-earth command enclosures with the traditional diagonals marked as inlaid timber or packed-earth paths. Walls stay below T1 inside the board area; taller towers stand outside the board edge |
+| Board surface | A levelled loess field laid out as a surveyed grid; lines are shallow incised channels with light rammed-earth edges |
+| River | The Dan River (丹水) crossing the board between ranks 4 and 5, with banks and subtle flow |
+| River inscription | Traditional **楚河　漢界** carved on stone markers on each bank, outside the play area, as the board's convention. Option: show 丹水 instead. The Codex explains the inscription's later origin |
+| Palaces | Low rammed-earth command enclosures, diagonals as inlaid timber or packed-earth paths, kept below T1 inside the board |
 | Board border | Rammed-earth embankments and palisades just outside the outer lines |
-| Near environment | Each army's stronghold behind its home rank: Han to one side, Chu to the other, as the two facing camps on Guangwu Mountain |
-| Far environment | Loess hills, ravine, distant Yellow River plain; painted backdrop |
-| Ambient life | Banner flutter at camp walls, drifting dust, birds, water flow in the canal, occasional smoke from camp fires. All outside the play area or below T1 |
-| Variants (later) | Dawn mist, high summer, overcast: same layout, different lighting |
+| Near environment | Each player's field camp behind their home rank, flying that player's state banners. This is the only environment element that changes with state choice |
+| Far environment | Loess ridges of the Changping valley; painted backdrop |
+| Ambient life | Banner flutter, drifting dust, birds, river flow, camp smoke. All outside the play area or below T1 |
+| Future battlefields | Maling, Yique, Jimo and others (post-MVP candidates) |
 
 ## 9. Camera
 
 | Mode | Description | Default |
 |---|---|---|
-| **Gameplay (default)** | Perspective camera, narrow field of view (≈ 30°) to minimise distortion, pitch ≈ 58°, player's army at the bottom | Yes |
-| Pitch adjust | 45°–75° within limits; player preference saved | — |
-| Orbit | Limited yaw ±15°, with snap back | — |
-| Zoom | Two presets: strategic (whole board) and tactical (≈ 1.6× closer), with smooth transition and clamps | Strategic |
-| Analysis view | Orthographic, top-down: pure positional clarity; formations remain, glyph overlay recommended | Optional |
-| Hotseat | Board rotates 180° between turns (optional) or stays fixed with an indicator | Option |
-| Cinematic | **Only** outside active input: game start, checkmate, victory. Short and always skippable. Off during play by default | — |
-
-The board's taller-than-wide shape (8 × 9 intervals), foreshortened by the pitch, fits naturally in a 16:9 frame. That leaves side space for the move list and the captured-pieces tray (document 02, §8).
+| **Gameplay** | Perspective, narrow field of view (≈ 30°), pitch ≈ 58°, player's army at the bottom | Yes |
+| Pitch adjust | 45°–75° within limits | — |
+| Orbit | Limited yaw ±15°, snap back | — |
+| Zoom | Strategic (whole board) and tactical (≈ 1.6×) presets | Strategic |
+| Analysis view | Orthographic top-down; the strategist's canopy disc and the base glyphs read clearly | Optional |
+| Hotseat | Optional 180° rotation between turns | Option |
+| Cinematic | Only outside active input (game start, checkmate, victory); short and skippable | — |
 
 ## 10. Lighting and post-processing
 
-- **Key light:** late-afternoon sun, low and warm, with long readable shadows that point *away* from the camera so they never hide bases.
-- **Global illumination:** baked for the static environment, with light probes for the formations.
-- **Shadows:** soft, stable cascades; contact shadows under figures for grounding.
-- **Post:** subtle colour grading (warm loess, cooler shadows), ambient occlusion, mild bloom on bronze highlights only, temporal anti-aliasing or upscaling. **No depth of field during play**, because it harms readability. **No heavy vignette or film grain.**
-- **Quality profiles** scale shadows, AO, figure density and LOD distances, never readability features (document 03, §8).
+- Key light: late-afternoon sun, low and warm, with shadows falling away from the camera.
+- Baked global illumination for the static environment; probes for formations; contact shadows.
+- Post: subtle grading, ambient occlusion, mild bloom on bronze only, TAA or upscaling. **No depth of field during play; no heavy vignette or grain.**
+- Quality profiles scale cost, never readability (document 03 §8).
 
 ## 11. Animation style
 
-- **Grounded and weighty:** motion-captured or carefully keyed base motion for humans and horses. No superhuman leaps or wuxia physics.
-- **Formation choreography:** figures in a formation move as a disciplined unit, with small offsets in timing and gait.
-- **Responsiveness:** selection feedback within one frame; move animation starts within 100 ms of a valid command (document 11).
-- **Readable timing:** anticipation, then action, then settle. Default move durations 0.5–1.4 s (document 06, §3), with speed control and reduced motion.
+Grounded and weighty (motion capture or careful keyframing; no wuxia physics). Formations move as disciplined units with small timing offsets. Selection feedback within one frame; move animation starts within 100 ms. Default move durations 0.5–1.4 s, with speed control and reduced motion.
 
 ## 12. Visual effects and capture depiction
 
-- VFX vocabulary: dust from marching and wheels, canal splashes, torch flames (Chu elephant), the trebuchet projectile arc and a dust impact, banner cloth simulation, subtle ink-wash flourishes in the UI only.
-- Capture: the defeated formation lowers its banner, kneels or withdraws, and dissolves into wind-blown loess dust. No blood, no bodies left on the board.
-- Check: a pulse on the threatened general's base rim, a drum accent, and a line from the checking piece. Flying-general violations are explained with a line between the generals (document 02, §8).
+- VFX: marching and wheel dust, river splashes, crossbow volley streaks with a soft dust impact, banner cloth, ink-wash flourishes in the UI only.
+- Capture: the defeated formation lowers its banner, kneels or withdraws, and dissolves into wind-blown loess dust. No blood, no bodies.
+- Check: pulse on the threatened general's base rim, drum accent, a line from the checking piece. Flying-general violations are explained with a line between the generals.
 
-## 13. Mood board and reference board: Milestone 1 specification
+## 13. Mood board and reference boards: Milestone 1 specification
 
-To be assembled by the art lead with the historian, **for internal use only**, recording the rights status of every image (most museum photography is copyrighted).
+**For internal use only**, recording the rights status of every image.
 
-| Board | Content | Source pool |
-|---|---|---|
-| **Mood board** | Light, atmosphere, landscape (loess, canal, Guangwu terrain), lacquer surfaces, bronze in light, banners in wind | Own photography, licensed stock, museum images under licence |
-| **Han equipment board** | Terracotta infantry, crossbowmen, cavalry, officers and general figures; armour close-ups; bronze chariots; weapons | HR-09 to HR-13, HR-16, HR-21 to HR-24 |
-| **Chu equipment board** | Zeng Hou Yi armour and shields; Chu weapons; Chu chariot finds; Chu silks and lacquer; Chu tall-cap depictions | HR-05 to HR-08, HR-17, HR-25, HR-37 |
-| **Machines and animals board** | Trebuchet mechanics (generic), elephant anatomy and handling, horse breeds and tack | HR-21, HR-26, HR-28, HR-29 |
-| **Architecture and environment board** | Rammed earth, Qin palace platforms, eave tiles, palisades, Guangwu site | HR-35, HR-36 |
-| **Negative board ("never")** | Examples of excluded tropes: Romance-style generals, Ming armour, howdahs, gunpowder cannons, green-patina weapons | Document 04, §6 |
+| Board | Content |
+|---|---|
+| **Mood board** | Light and atmosphere; Changping loess terrain; lacquer, bronze and iron in light; banners in wind |
+| **Screen reference sheet: *Qin Dynasty Epic*** | Stills showing how each state is colour-coded and how armies read on screen. **Every borrowed look is traced to its artefact** (document 04 §1.3); no designs are copied |
+| **Seven state boards** | One per state: armour, weapons, headgear, textiles, emblem script samples, signature traits (document 06 §2), with register IDs |
+| **Common kit board** | Shared garments, weapons, chariot, horses and tack, map boards, banners |
+| **Architecture and environment board** | Rammed earth, palisades, field camps, Changping valley |
+| **Negative board ("never")** | Romance-style generals, Ming armour, pavises, gunpowder, elephants, trebuchets, green-patina weapons, copied screen designs |
 
 ### 13.1 Concept art deliverables (Milestone 1)
 
-1. Two **style frames**: a full board in the gameplay view, and a tactical close-up.
-2. **Piece concept sheets:** 7 pieces × 2 armies. Front and three-quarter view, gameplay-camera thumbnail, greyscale silhouette test, callouts linked to register IDs.
-3. **Base and glyph design sheet** for both armies, including the colour-blind simulation.
-4. **Board and environment** layout paintover.
-5. **UI style sheet** (document 02, §8).
+1. Two **style frames**: full board in the gameplay view, and a tactical close-up.
+2. **Base formation sheets**: the seven piece types, neutral kit, with silhouette tests.
+3. **State identity sheets**: seven sheets, each showing the identity layer on a Soldier, a Crossbow unit and a General.
+4. **Base, band, emblem and glyph sheet**, including colour-blind simulations of all 28 pairings.
+5. **Board and environment** paintover.
+6. **UI style sheet**.
 
-All concept sheets go through the historian review and the readability test before approval.
+Generative AI may be used to explore ideas before these sheets are drawn (D11). The approved sheets themselves are human-made and reviewed by the historian.

@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Document status | **Draft v0.1, submitted for approval.** It becomes the Technical Design Document (TDD) at Milestone 1 |
+| Document status | **v0.2: updated for seven selectable states.** Implementation of `Xiangqi.Core` has started (Milestone 2). Becomes the TDD at Milestone 1 |
 | Date | 2026-11-20 |
 | Assumes | Unity 6 LTS + URP, C# (document 03). The engine-independent layers are unaffected if the engine changes |
 
@@ -83,6 +83,8 @@ flowchart TB
 - **Upgrade path:** if profiling the AI shows a need, 128-bit bitboards (90 squares) can replace the mailbox behind the same API.
 
 ### 4.2 Public API sketch (illustrative, not final code)
+
+> **Implemented (M2 increment 1):** see `src/Xiangqi.Core` and its README. Differences from this sketch: the board is a plain 90-cell array with precomputed move tables instead of a padded mailbox; `IllegalReason` gained `InvalidMovePattern` and `SoldierSidewaysBeforeRiver` and dropped `OutOfBoard` (squares are validated when they are created); terminal states are reported by `PositionStatus` (`Ongoing`, `Checkmate`, `Stalemate`).
 
 ```csharp
 public readonly struct Square { public readonly byte File, Rank; }       // a–i, 0–9
@@ -167,9 +169,16 @@ sequenceDiagram
 ### 7.1 Data model
 
 ```text
-FormationDefinition (ScriptableObject)
-  pieceType, faction (Han | Chu)
-  base: BaseDefinition (mesh, rim/band material, glyph texture)
+StateDefinition (ScriptableObject), one per state: Qin, Chu, Qi, Zhao, Yan, Wei, Han
+  id, displayNames (localised), emblem (regional-script glyph texture)
+  palette (primary, secondary), alternatePalette (for same-state matches)
+  identityLayer: part-library overrides (armour, headgear, shields, signature weapons)
+  banner designs, music motif, Codex entries, registerIds[]
+
+FormationDefinition (ScriptableObject), one per piece type (shared by all states)
+  pieceType
+  base: BaseDefinition (mesh, rim material driven by state colour,
+        band pattern driven by turn role, glyph texture driven by turn role)
   slots[]: FormationSlot
       role (Principal | Signature | Support), localPosition (in P units), facing
       archetype: FigureArchetype (skeleton, part library, allowed variants)
@@ -179,7 +188,8 @@ FormationDefinition (ScriptableObject)
   registerIds[] (links to the historical reference register)
 ```
 
-- **Assembly:** `FormationFactory.Create(definition, seed, densityTier)` builds a formation deterministically from the modular part library and paint-mask palettes (document 05, §6.5).
+- **Assembly:** `FormationFactory.Create(definition, state, turnRole, paletteVariant, seed, densityTier)` builds a formation deterministically from the shared part library, the state's identity layer and paint-mask palettes (document 05, §6.5). That gives 7 piece definitions × 7 state definitions, not 49 hand-built formations.
+- **State is presentation-only.** `Xiangqi.Core` and `Xiangqi.Session` know only Red/Black (first/second player). The chosen states live in the game setup and the save file, and never reach rules code.
 - **Identity mapping:** `FormationRegistry` maps the 32 `PieceId`s to formation instances. Captured formations are hidden or pooled, not destroyed, so undo is instant.
 - **Editor validation:** footprint radius, height tier, missing register IDs, triangle budgets and LODs are checked when a definition is saved and in CI.
 
@@ -193,7 +203,7 @@ FormationDefinition (ScriptableObject)
 
 - **AnimationDirector** consumes domain events and builds a **choreography** per event: an ordered set of tracks (defender yields, attacker moves along a planned path, projectile, camera accent, audio cues).
 - **Authoritative snapping:** when a choreography completes, is skipped, or is interrupted by a new event (undo, fast replay, the next move), every affected formation snaps to its `BoardGeometry` position for the authoritative square. Logical state never waits for animation.
-- **Path planner:** produces the move paths documented in document 06, §3: orthogonal-then-diagonal for the Horse, via the eye point for the Elephant, and an offset bulge for the Cannon passing its screen. It guarantees no footprint overlap.
+- **Path planner:** produces the move paths documented in document 06, §4: orthogonal-then-diagonal for the Horse, via the eye point for the Strategist (Elephant), and an offset bulge for the Crossbow unit (Cannon) passing its screen. It guarantees no footprint overlap.
 - **Per-figure animation:** Unity Animator with a shared humanoid controller per role. Idle desynchronisation by seed. Animator culling and update-rate reduction for off-focus formations.
 - **Settings:** speed multiplier, instant mode, reduced motion. All three are applied in the director.
 
@@ -234,7 +244,10 @@ FormationDefinition (ScriptableObject)
   "startFen": "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w - - 0 1",
   "moves": ["h2e2", "h9g7"],
   "result": null,
-  "players": { "red": "human", "black": { "ai": 3 } },
+  "players": {
+    "red":   { "controller": "human", "state": "qin" },
+    "black": { "controller": { "ai": 3 }, "state": "chu", "palette": "primary" }
+  },
   "clocks": null,
   "createdUtc": "2026-11-20T00:00:00Z",
   "appVersion": "0.1.0"

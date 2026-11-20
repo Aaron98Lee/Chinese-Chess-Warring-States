@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| Document status | **Draft v0.1. Recommendation submitted for approval (decisions D5, D6)** |
+| Document status | **v0.2: Unity approved (D5); Windows only for now (D6)** |
 | Date | 2026-11-20 (licensing and version facts checked on this date; recheck at approval) |
 | Scope | Engine, language, target platforms, rendering approach, asset workflow, performance, technical risks |
 
@@ -15,12 +15,12 @@ Derived from the brief and the design documents (02, 05, 06):
 | # | Requirement | Weight driver |
 |---|---|---|
 | R1 | Fixed-camera, small-scene real-time 3D at high fidelity, up to 4K | Visual fidelity |
-| R2 | About 130 animated humans, about 28 horses, 2 elephants, 4 chariots and 4 trebuchets on screen at once (document 06 density "full") | Animation and crowd performance |
+| R2 | About 130 animated humans, about 28 horses and 4 chariots on screen at once (document 06 density "full"), from any of seven state kits | Animation and crowd performance |
 | R3 | Shared skeletons, retargeting, modular parts, paint-mask variation, LODs | Asset pipeline |
 | R4 | Rules engine and AI independent of the engine, testable headless | Architecture fit |
 | R5 | Text-diffable project files, headless CI builds and tests; development partly AI-assisted (Claude Code works in text) | Engineering workflow |
 | R6 | High-DPI scalable UI with full CJK text | UI |
-| R7 | PC first, macOS second, a later tablet or console port possible | Platform reach |
+| R7 | Windows now (D6); later macOS, tablet or console ports possible | Platform reach |
 | R8 | Predictable commercial licensing | Licensing |
 | R9 | Long-term maintainability and the ability to hire for it | Ecosystem |
 
@@ -103,17 +103,16 @@ Justification, tied to the requirements:
 - **Third-party candidates (not yet approved):** a Steamworks wrapper (Steamworks.NET or Facepunch.Steamworks, both MIT); FMOD or Wwise (Milestone 1 evaluation).
 - **Explicitly excluded from the shipped game:** GPL engines such as Pikafish and Fairy-Stockfish (both GPL-3.0). They may be used **only as external benchmarking tools** in internal test harnesses and are never linked or distributed with the game.
 
-## 7. Target platforms and hardware tiers (proposal for decision D6)
+## 7. Target platform and hardware tiers (D6: Windows only for now)
 
 | Tier | Example hardware (to be agreed) | Target |
 |---|---|---|
 | **Minimum** | Windows 10 22H2 / 11 64-bit; 4-core CPU (i5-8400 / Ryzen 5 2600 class); 8 GB RAM; GTX 1060 6 GB / RX 580 class | 1080p, 60 fps, Low–Medium |
 | **Recommended** | 6-core CPU; 16 GB RAM; RTX 3060 / RX 6600 XT class | 1440p, 60 fps, High |
 | **4K** | RTX 4070 / RX 7800 XT class | 2160p, 60 fps, High (native; upscaling allowed only if disclosed in settings) |
-| **macOS** | Apple silicon (M1 baseline; M-series Pro for Retina 4K-class output) | Medium at 1440p-class, 60 fps; validated in the spike |
 | Stretch | Integrated GPUs (Iris Xe, Radeon 780M class) | 1080p Low, 30–60 fps |
 
-**Distribution:** Steam first (Windows and macOS). Other stores (Epic, GOG, Mac App Store) to be evaluated. **Mainland China publication requires separate regulatory approval for games** and is outside the initial scope unless decided otherwise (risk R12).
+**Distribution:** Steam (Windows). Other Windows stores (Epic, GOG) can be evaluated later. macOS remains a possible later port; the architecture does not preclude it. **Mainland China publication requires separate regulatory approval for games** and is outside the initial scope unless decided otherwise (risk R12).
 
 ## 8. Rendering approach
 
@@ -140,7 +139,7 @@ Reference board (register IDs) ─► Concept sheet ─► Historian review + re
 |---|---|
 | DCC tools | Blender (free; output is not licence-encumbered) as the baseline; Maya, ZBrush or Substance where the artist prefers. Licences tracked |
 | Scale and units | 1 unit = 1 m in DCC; formation assembly applies the board-pitch scale |
-| Triangle budgets (LOD0, PC High) | Principal human ≤ 30k; supporting human ≤ 15k; horse ≤ 20k; elephant ≤ 40k; chariot ≤ 30k; trebuchet ≤ 25k. LOD1 ≈ 50%, LOD2 ≈ 25%, LOD3 ≈ 10% |
+| Triangle budgets (LOD0, PC High) | Principal human ≤ 30k; supporting human ≤ 15k; horse ≤ 20k; chariot ≤ 30k; formation props (canopy, map board, drum, banners) ≤ 5k each. LOD1 ≈ 50%, LOD2 ≈ 25%, LOD3 ≈ 10% |
 | Textures | Shared 2K atlases or texture sets per character archetype; 4K only for the board surface and hero environment pieces; texel density target 512–1024 px/m on figures (screen-size analysis: §10) |
 | Compression | BC7 (colour), BC5 (normals); ASTC for future mobile |
 | Naming convention | `<Faction>_<Category>_<Name>_<Variant>_<LOD>`, e.g. `HAN_CHR_Infantry_Torso_A_LOD0`, `CHU_VEH_Chariot_Body_LOD1` |
@@ -148,7 +147,7 @@ Reference board (register IDs) ─► Concept sheet ─► Historian review + re
 | Validation | Automated import checks (scale, triangle count, bone count, texture sizes, naming, missing LODs) run in CI |
 | Rights | Every asset records author, tool, licence and ownership; generative-AI use only under the policy in decision D11 |
 
-**Who produces the assets.** Claude Code can produce code, tests, shaders, editor tools, import validators, procedural greybox geometry, specifications and documentation. **Production-quality sculpted characters, horses, the elephant, textures and animation require human artists** (in-house or outsourced) or tools you approve. This report does not pretend otherwise (decision D12).
+**Who produces the assets.** Claude Code can produce code, tests, shaders, editor tools, import validators, procedural greybox geometry, specifications and documentation. **Production-quality sculpted characters, horses, textures and animation require human artists** (in-house or outsourced) or tools you approve. This report does not pretend otherwise (decision D12).
 
 ## 10. Performance considerations
 
@@ -186,9 +185,9 @@ All targets are formalised in document 11, §4.
 
 | ID | Decision | Recommendation |
 |---|---|---|
-| D5 | Engine | Unity 6 LTS + URP, confirmed by the Milestone 1 spike; Godot as fallback |
-| D6 | Platforms and hardware tiers | Windows (Steam) first, macOS second; tiers as in §7 |
-| D11 | Generative-AI policy for assets | No generative-AI final art unless legally reviewed and disclosed on Steam |
+| D5 | Engine | **Approved:** Unity 6 LTS + URP, confirmed by the Milestone 1 spike; Godot as fallback |
+| D6 | Platforms and hardware tiers | **Approved:** Windows (Steam) only for now; tiers as in §7 to be agreed |
+| D11 | Generative-AI policy for assets | **Approved:** generative AI for concept exploration only; final assets human-made unless separately approved |
 | D12 | Asset production model | Outsourced character, animation and environment production under specs from this team; in-house art lead or director |
 | D13 | Source-art storage | Git LFS for runtime assets; separate storage for large source files |
 
