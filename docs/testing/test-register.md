@@ -19,7 +19,7 @@ the end as "not yet run".
 | ID | Criterion | Test | Result | Evidence |
 |---|---|---|---|---|
 | TR-001 | QG-01 | Perft from the initial position, depths 1–4, against published reference values (44 / 1,920 / 79,666 / 3,290,240) | **Pass** | `PerftTests.InitialPosition_MatchesPublishedReference` (4 cases) |
-| TR-002 | QG-01 | Perft from the initial position, depth 5 | **133,312,995** (5.7 s, about 23M nodes/s). Independent confirmation at depth 5 by Fairy-Stockfish **started, not yet completed** (about 1 hour); depths 1–4 already confirmed (TR-010) | `xiangqi-cli perft 5` |
+| TR-002 | QG-01 | Perft from the initial position, depth 5 | **Pass: 133,312,995**, confirmed independently by Fairy-Stockfish (pyffish 0.0.91, 46 min run, same value) | `xiangqi-cli perft 5`; `PerftTests.InitialPosition_Depth5_MatchesIndependentEngine` |
 | TR-003 | QG-02 | Per-rule tests: every piece's legal moves and each illegal-move reason with its related square (palace, river, eye, leg, obstruction, cannon 0/1/2 screens, soldier before and after the river, own piece, opponent's piece, empty source, self-check through a pin, flying General), check by cannon and horse, checkmate, **stalemate = loss** | **Pass** (39 tests) | `RuleTests` |
 | TR-004 | QG-03 | `Check` agrees with `LegalMoves` for every from/to pair (8,100) in each of 2,467 positions sampled from seeded random games; per-square generation agrees with whole-board generation | **Pass** | `PropertyTests.Check_AgreesWithLegalMoves_ForEveryFromToPair` |
 | TR-005 | QG-05 | 1,000,000 make/unmake round trips over 4,697 seeded random games: position restored bit-identically, and the incremental hash equals the recomputed hash after every move | **Pass** | `PropertyTests.MakeUnmake_RestoresExactPosition_AndHashStaysConsistent` |
@@ -31,7 +31,7 @@ the end as "not yet run".
 | TR-011 | — | Status consistency: Ongoing if and only if legal moves exist; otherwise Checkmate when in check, else Stalemate, and the side to move loses (247 terminal positions reached) | **Pass** | `PropertyTests.Status_IsConsistentWithLegalMovesAndCheck` |
 | TR-012 | QR-03 (early) | Clean CI build and test on GitHub Actions (`ubuntu-latest`) from commit `8af85d5`: build with warnings as errors, full test suite, perft depth-4 smoke test | **Pass** | GitHub Actions run 44696614832 (job 136154773868), 2026-11-20 |
 
-**Suite total (2026-11-20):** 77 tests, 77 passed, 0 failed (about 4 s).
+**Suite total (2026-11-20):** 78 tests, 78 passed, 0 failed (about 10 s, including the depth-5 perft).
 
 One test failed on its first run because of an error in the test, not the engine: it expected b0→b2 to be rejected as `InvalidMovePattern`, but b2 holds Red's own Cannon in the opening position, so the engine's `OwnPieceAtTarget` was correct. The test now uses b0→b1.
 

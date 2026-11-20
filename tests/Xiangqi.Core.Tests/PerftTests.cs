@@ -19,6 +19,17 @@ namespace Xiangqi.Core.Tests
             Assert.That(Perft.Count(Position.Initial(), depth), Is.EqualTo(expected));
         }
 
+        /// <summary>
+        /// Depth 5 (133,312,995 nodes, about 6 s). Value confirmed independently with Fairy-Stockfish
+        /// (pyffish 0.0.91) on 2026-11-20; see docs/testing/test-register.md (TR-002).
+        /// </summary>
+        [Test]
+        [Category("Slow")]
+        public void InitialPosition_Depth5_MatchesIndependentEngine()
+        {
+            Assert.That(Perft.Count(Position.Initial(), 5), Is.EqualTo(133_312_995L));
+        }
+
         [Test]
         public void Divide_SumsToTotal()
         {
