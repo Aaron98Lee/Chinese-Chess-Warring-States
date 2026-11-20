@@ -29,6 +29,7 @@ the end as "not yet run".
 | TR-009 | QG-09 (partial) | ICCS notation: parse and format; round-trip for every legal move of sampled positions | **Pass**. WXF and Chinese notation not yet implemented | `FenAndNotationTests` |
 | TR-010 | QG-01 | External cross-check against an independent engine (Fairy-Stockfish via pyffish 0.0.91, run externally): for **305 positions** (initial position, 4 rule probes, 300 seeded random-game positions: 102 with 25–32 pieces, 72 with 17–24, 50 with 9–16, 81 with ≤ 8 pieces, including 11 checkmates and 18 stalemates), the **exact sorted legal-move list** and **perft depths 1–3** were compared. Also initial-position perft depths 3 and 4 (79,666 and 3,290,240) | **Pass: 0 mismatches; 8,639,642 leaf nodes compared.** Initial-position depths 3 and 4 match | Counts stored in `tests/data/perft-fairy-stockfish.json` and re-checked on every test run by `ExternalReferenceTests` |
 | TR-011 | — | Status consistency: Ongoing if and only if legal moves exist; otherwise Checkmate when in check, else Stalemate, and the side to move loses (247 terminal positions reached) | **Pass** | `PropertyTests.Status_IsConsistentWithLegalMovesAndCheck` |
+| TR-012 | QR-03 (early) | Clean CI build and test on GitHub Actions (`ubuntu-latest`) from commit `8af85d5`: build with warnings as errors, full test suite, perft depth-4 smoke test | **Pass** | GitHub Actions run 44696614832 (job 136154773868), 2026-11-20 |
 
 **Suite total (2026-11-20):** 77 tests, 77 passed, 0 failed (about 4 s).
 
